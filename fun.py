@@ -30,13 +30,12 @@ def quienGano(lista):
         return distancias[0][0]
 
 
-def benchmarkEstrategia(lista_funcs, n=1000):
+def benchmarkEstrategia(lista_funcs, n=100):
     # benchmarkEstrategia recibe una lista de funciones estilo jugar(), realiza n partidas
     # y devuelve una lista con tuplas (nombreFuncion, winrate).
 
     ganadores = []
 
-    print(f"Haciendo {n} partidas con un mazo nuevo cada una...")
     for _ in range(n):
         mazo = generarMazo(len(lista_funcs))
 
@@ -54,3 +53,14 @@ def benchmarkEstrategia(lista_funcs, n=1000):
         winrates.append(wins / n)
 
     return [(func.__name__, winrate) for func, winrate in zip(lista_funcs, winrates)]
+
+
+if __name__ == "__main__":
+    n = 10000
+    funcs = [jugar, jugarMiedo, jugarBorracho, jugarSmart, jugarSmart2]
+
+    print(f"Haciendo {n} partidas entre {', '.join(f.__name__ for f in funcs)}...")
+    res = benchmarkEstrategia(funcs, n)
+
+    for f, w in res:
+        print(f"{f:20} winrate={w:.2f}")
