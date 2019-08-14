@@ -43,7 +43,3 @@ def compararEstrategia(lista_jug):
     for j in lista_jug:
         res.append(funcs[j](mazo))
     return res
-
-
-m = generarMazo(2)
-jugarSmart(m)
