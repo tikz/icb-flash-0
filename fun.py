@@ -1,5 +1,5 @@
-from main import *
-from opcionales import *
+from main import generarMazo, jugar, jugarMiedo, jugarBorracho
+from opcionales import jugarSmart, jugarSmart2
 
 
 def quienGano(lista):
@@ -20,7 +20,7 @@ def quienGano(lista):
     elif len(l) == 1:
         return l[0][0]  # Hay uno solo que todavia no perdio. Gano ese.
 
-    distancias = [(i, 21-x) for i, x in l]
+    distancias = [(i, 21 - x) for i, x in l]
 
     # Ordeno la lista de forma creciente en base a la distancia al 21
     distancias.sort(key=lambda x: x[1])
@@ -32,8 +32,8 @@ def quienGano(lista):
         return distancias[0][0]
 
 
-def compararEstrategia2(lista_jug):
-    # compararEstrategia2 recibe una lista de jugadores al igual que compararEstrategia
+def benchmarkEstrategia(lista_jug):
+    # benchmarkEstrategia recibe una lista de jugadores al igual que compararEstrategia
     # pero realiza 1000 partidas y devuelve una lista con el winrate de cada jugador
 
     # 0=jugar, 1=jugarMiedo, 2=jugarBorracho, 3=jugarSmart, 4=jugarSmart2
@@ -58,6 +58,6 @@ def compararEstrategia2(lista_jug):
         for g in ganadores:
             if jug == g:
                 wins += 1
-        winrates.append(wins/n)
+        winrates.append(wins / n)
 
     return winrates
