@@ -10,7 +10,7 @@ def jugarSmart(m, p_cutoff=0.6):
     suma = 0
     p_mejorar = 1
 
-    while suma < 21 and p_mejorar > p_cutoff:
+    while suma < 21 and p_mejorar > p_cutoff and len(m) != 0:
         suma += m.pop(0)
 
         # probs contiene tuplas (valor_carta, probabilidad)
@@ -29,7 +29,7 @@ def jugarSmart(m, p_cutoff=0.6):
 def jugarSmartSugerido(m):
     suma = 0
 
-    while random.random() > suma / 20 and suma < 21:
+    while random.random() > suma / 20 and suma < 21 and len(m) != 0:
         suma += m.pop(0)
 
     return suma

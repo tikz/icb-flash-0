@@ -35,7 +35,6 @@ def benchmarkEstrategia(lista_funcs, n=100):
     # y devuelve una lista con tuplas (nombreFuncion, winrate).
 
     ganadores = []
-
     for _ in range(n):
         mazo = generarMazo(len(lista_funcs))
 
