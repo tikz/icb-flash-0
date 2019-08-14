@@ -20,7 +20,7 @@ def quienGano(lista):
 
     distancias = [(i, 21 - x) for i, x in l]
 
-    # Ordeno la lista de forma decreciente en base a la distancia al 21.
+    # Ordeno la lista de forma creciente en base a la distancia al 21.
     distancias.sort(key=lambda x: x[1])
 
     # El primer jugador de la lista ordenada tiene la misma distancia que el 2do. Hay un empate entre esos dos (o más jugadores).
