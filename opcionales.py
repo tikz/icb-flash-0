@@ -3,7 +3,7 @@ from main import generarMazo, jugar, jugarMiedo, jugarBorracho
 
 
 def jugarSmart(m, p_cutoff=0.6):
-    # jugarSmart saca una carta solo si la probabilidad de mejorar la suma (sin pasarse de 21) es mayor a una probabilidad de corte arbitraria p_cutoff.
+    # jugarSmart saca una carta solo si la probabilidad de mejorar la suma (sin pasarse de 21) es mayor a una probabilidad de corte arbitraria p_cutoff por defecto 0.6.
     # Para ello, lee el contenido de la lista mazo y calcula probabilidades para cada uno de los valores, sin saber su orden.
     # Si bien podría decirse que es hacer trampa, es análogo a "contar cartas" en donde se está al tanto de las cartas que salieron para deducir las que quedan.
 

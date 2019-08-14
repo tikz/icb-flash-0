@@ -7,7 +7,7 @@ def quienGano(lista):
     # Si no gano nadie, devuelve None.
     # Si hay empate entre dos o más jugadores, tambien devuelve None.
 
-    # Primero creo una lista con tuplas que contengan (index, suma)
+    # Primero creo una lista con tuplas que contengan (indexOriginal, suma)
     l = [(i, x) for i, x in enumerate(lista)]
 
     # Solo me interesan los que no se pasaron de 21.

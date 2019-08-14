@@ -17,7 +17,6 @@ def jugar(m):
     while suma < 21:
         if len(m) != 0:
             carta = m.pop(0)
-            # print("Saque un", carta)
             suma += carta
     return suma
 
@@ -41,10 +40,10 @@ def jugarMiedo(m):
 def jugarBorracho(m):
     suma = 0
 
-    # Siempre pido la primer carta
+    # Siempre saco una carta primero
     suma += m.pop(0)
 
-    # Ahora juego como borracho
+    # Y ahora me pongo en pedo
     while random.random() > 0.5 and suma < 21:
         suma += m.pop(0)
 
