@@ -27,6 +27,7 @@ def jugarSmart(m, p_cutoff=0.6):
 
 
 def jugarSmartSugerido(m):
+    # La estrategia jugarSmart sugerida en el enunciado.
     suma = 0
 
     while random.random() > suma / 20 and suma < 21 and len(m) != 0:

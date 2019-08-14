@@ -3,8 +3,8 @@ from opcionales import jugarSmart, jugarSmartSugerido
 
 
 def quienGano(lista):
-    # quienGano recibe una lista con las sumas de cada jugador y devuelve el index del jugador que gano.
-    # Si no gano nadie, devuelve None.
+    # quienGano recibe una lista con las sumas de cada jugador y devuelve el index del jugador que ganó.
+    # Si no ganó nadie, devuelve None.
     # Si hay empate entre dos o más jugadores, tambien devuelve None.
 
     # Primero creo una lista con tuplas que contengan (indexOriginal, suma)
@@ -16,7 +16,7 @@ def quienGano(lista):
     if len(l) == 0:
         return None  # Se pasaron todos de 21, perdieron todos.
     elif len(l) == 1:
-        return l[0][0]  # Hay uno solo que no perdió por pasarse. Gano ese.
+        return l[0][0]  # Hay uno solo que no perdió por pasarse. Ganó ese.
 
     distancias = [(i, 21 - x) for i, x in l]
 
