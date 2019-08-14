@@ -1,30 +1,36 @@
 import random
 from main import generarMazo, jugar, jugarMiedo, jugarBorracho
 
-# Del enunciado de compararEstrategia
-# index 0=jugar, 1=jugarMiedo, 2=jugarBorracho, 3=jugarSmart, 4=jugarSmart2
 
+def jugarSmart(m, p_cutoff=0.6):
+    # jugarSmart saca una carta solo si la probabilidad de mejorar la suma (sin pasarse de 21) es mayor a una probabilidad de corte arbitraria p_cutoff.
+    # Para ello, lee el contenido de la lista mazo y calcula probabilidades para cada uno de los valores, sin saber su orden.
+    # Si bien podría decirse que es hacer trampa, es análogo a "contar cartas" en donde se está al tanto de las cartas que salieron para deducir las que quedan.
 
-def jugarSmart(m):
     suma = 0
+    p_mejorar = 1
 
-    while random.random() > suma / 20 and suma < 21:
-        carta = m.pop(0)
-        suma += carta
+    while suma < 21 and p_mejorar > p_cutoff:
+        suma += m.pop(0)
+
+        # probs contiene tuplas (valor_carta, probabilidad)
+        probs = []
+        for v in range(1, 14):
+            probs.append((v, m.count(v) / len(m)))
+
+        # max_sin_perder es el máximo valor de carta que puedo sacar para mejorar mi suma sin que me haga pasarme de 21.
+        max_sin_perder = 21 - suma
+        p_mejorar = sum([p for v, p in probs if v <= max_sin_perder])
+        # p_perder = sum([p for v, p in probs if v > max_sin_perder])
 
     return suma
 
 
-def jugarSmart2(m):
+def jugarSmartSugerido(m):
     suma = 0
-    n = 0
 
-    # Por cada carta que saque, se cambia el limite de corte
-    # hasta 5 cartas ya que 5*1/5 = 1 y random.random() devuelve entre [0,1)
-    while random.random() > n * 1 / 5 and suma < 21:
-        carta = m.pop(0)
-        suma += carta
-        n += 1
+    while random.random() > suma / 20 and suma < 21:
+        suma += m.pop(0)
 
     return suma
 
@@ -37,3 +43,7 @@ def compararEstrategia(lista_jug):
     for j in lista_jug:
         res.append(funcs[j](mazo))
     return res
+
+
+m = generarMazo(2)
+jugarSmart(m)

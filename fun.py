@@ -1,11 +1,11 @@
 from main import generarMazo, jugar, jugarMiedo, jugarBorracho
-from opcionales import jugarSmart, jugarSmart2
+from opcionales import jugarSmart, jugarSmartSugerido
 
 
 def quienGano(lista):
     # quienGano recibe una lista con las sumas de cada jugador y devuelve el index del jugador que gano.
     # Si no gano nadie, devuelve None.
-    # Si hay empate entre dos o mas jugadores, tambien devuelve None.
+    # Si hay empate entre dos o más jugadores, tambien devuelve None.
 
     # Primero creo una lista con tuplas que contengan (index, suma)
     l = [(i, x) for i, x in enumerate(lista)]
@@ -16,14 +16,14 @@ def quienGano(lista):
     if len(l) == 0:
         return None  # Se pasaron todos de 21, perdieron todos.
     elif len(l) == 1:
-        return l[0][0]  # Hay uno solo que no perdio por pasarse. Gano ese.
+        return l[0][0]  # Hay uno solo que no perdió por pasarse. Gano ese.
 
     distancias = [(i, 21 - x) for i, x in l]
 
     # Ordeno la lista de forma decreciente en base a la distancia al 21.
     distancias.sort(key=lambda x: x[1])
 
-    # El primer jugador de la lista ordenada tiene la misma distancia que el 2do. Hay un empate entre esos dos (o mas jugadores).
+    # El primer jugador de la lista ordenada tiene la misma distancia que el 2do. Hay un empate entre esos dos (o más jugadores).
     if distancias[0][1] == distancias[1][1]:
         return None
     else:
@@ -31,7 +31,7 @@ def quienGano(lista):
 
 
 def benchmarkEstrategia(lista_funcs, n=100):
-    # benchmarkEstrategia recibe una lista de funciones estilo jugar(), realiza n partidas
+    # benchmarkEstrategia recibe una lista de funciones estilo jugar(), los hace jugar entre ellos n partidas
     # y devuelve una lista con tuplas (nombreFuncion, winrate).
 
     ganadores = []
@@ -57,7 +57,7 @@ def benchmarkEstrategia(lista_funcs, n=100):
 
 if __name__ == "__main__":
     n = 10000
-    funcs = [jugar, jugarMiedo, jugarBorracho, jugarSmart, jugarSmart2]
+    funcs = [jugar, jugarMiedo, jugarBorracho, jugarSmart, jugarSmartSugerido]
 
     print(f"Haciendo {n} partidas entre {', '.join(f.__name__ for f in funcs)}...")
     res = benchmarkEstrategia(funcs, n)
