@@ -38,8 +38,9 @@ def jugarMiedo(m):
 def jugarBorracho(m):
     suma = 0
 
-    # Siempre saco una carta primero
-    suma += m.pop(0)
+    # Saco una carta
+    if len(m) != 0:
+        suma += m.pop(0)
 
     # Y ahora me pongo en pedo
     while random.random() > 0.5 and suma < 21 and len(m) != 0:
