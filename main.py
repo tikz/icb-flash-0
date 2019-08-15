@@ -15,8 +15,7 @@ def generarMazo(n):
 def jugar(m):
     suma = 0
     while suma < 21 and len(m) != 0:
-        carta = m.pop(0)
-        suma += carta
+        suma += m.pop(0)
     return suma
 
 
@@ -30,8 +29,7 @@ def jugar_varios(m, j):
 def jugarMiedo(m):
     suma = 0
     while suma < 19 and len(m) != 0:
-        carta = m.pop(0)
-        suma += carta
+        suma += m.pop(0)
     return suma
 
 

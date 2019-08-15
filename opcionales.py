@@ -21,7 +21,6 @@ def jugarSmart(m, p_cutoff=0.6):
         # max_sin_perder es el máximo valor de carta que puedo sacar para mejorar mi suma sin que me haga pasarme de 21.
         max_sin_perder = 21 - suma
         p_mejorar = sum([p for v, p in probs if v <= max_sin_perder])
-        # p_perder = sum([p for v, p in probs if v > max_sin_perder])
 
     return suma
 
@@ -43,4 +42,5 @@ def compararEstrategia(lista_jug):
     res = []
     for j in lista_jug:
         res.append(funcs[j](mazo))
+
     return res

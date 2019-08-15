@@ -7,11 +7,8 @@ def quienGano(lista):
     # Si no ganó nadie, devuelve None.
     # Si hay empate entre dos o más jugadores, tambien devuelve None.
 
-    # Primero creo una lista con tuplas que contengan (indexOriginal, suma)
-    l = [(i, x) for i, x in enumerate(lista)]
-
-    # Solo me interesan los que no se pasaron de 21.
-    l = [x for x in l if x[1] <= 21]
+    # Primero creo una lista con tuplas que contengan (indexOriginal, suma), y que no se hayan pasado
+    l = [(i, x) for i, x in enumerate(lista) if x <= 21]
 
     if len(l) == 0:
         return None  # Se pasaron todos de 21, perdieron todos.
@@ -26,8 +23,8 @@ def quienGano(lista):
     # El primer jugador de la lista ordenada tiene la misma distancia que el 2do. Hay un empate entre esos dos (o más jugadores).
     if distancias[0][1] == distancias[1][1]:
         return None
-    else:
-        return distancias[0][0]
+
+    return distancias[0][0]
 
 
 def benchmarkEstrategia(lista_funcs, n=100):
