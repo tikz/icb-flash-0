@@ -15,7 +15,7 @@ def quienGano(lista):
 
     if len(l) == 0:
         return None  # Se pasaron todos de 21, perdieron todos.
-    elif len(l) == 1:
+    if len(l) == 1:
         return l[0][0]  # Hay uno solo que no perdió por pasarse. Ganó ese.
 
     distancias = [(i, 21 - x) for i, x in l]
